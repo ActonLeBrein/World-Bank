@@ -1,0 +1,77 @@
+@media(max-width:767px){
+	ul.nav.options > li.dropdown > a.dropdown-toggle {
+		font-size: 13px;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: white;
+	}
+	#searchs > h1 {
+		font-size: 30px;
+	}
+	#searchs > h6 {
+		font-size: 14px;
+	}
+	#filterbtn {
+	width: 14%;
+	height: 160px;
+	background: url('../img/btn_000.png') no-repeat;
+	color: white;
+	}
+	.filteropt > ul.nav.navbar-nav > li.dropdown {
+	width: 29%;
+	height: 128px;
+	background: #53191A;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	}
+}
+
+/*@media(min-width:768px){
+	ul.nav.options > li.dropdown {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 50%;
+	font-size: 12px;
+	}
+	ul.nav.user > li.dropdown {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 13px;
+	}
+	span.glyphicon.glyphicon-chevron-down {
+	position: relative;
+	top: 2px;
+	font-size: 12px;
+	left: 5px;
+	}
+	span.pipe {
+	float: left;
+	font-size: 65px;
+	color: white;
+	}
+}
+
+@media(min-width:992px){
+	ul.nav.options > li.dropdown {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 25%;
+	font-size: 15px;
+	}
+	span.glyphicon.glyphicon-chevron-down{
+	position: relative;
+	top: 2px;
+	font-size: 15px;
+	left: 5px;
+	}
+	span.pipe {
+	float: left;
+	font-size: 35px;
+	color: white;
+	}
+}*/
+
+@media(min-width:1200px){}

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>World Bank - Operational ToolKit</title>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.css" rel="stylesheet" media="screen" type="text/css">
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
+        <!-- Add custom CSS here -->
+        <link href="/static/css/world_bank.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
+        <!-- Page Specific CSS -->
+        <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css" type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Tangerina Font-->
+        <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+        <!-- Include the plugin's CSS and JS: -->
+        <script src="/static/js/bootstrap-multiselect.js" type="text/javascript"></script>
+        <link href="/static/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/css/responsive_WB.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/static/js/app.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+        <script src="/static/js/combobox.js" type="text/javascript"></script>
+        <link rel="shortcut icon" href="{% static "img/logo_icon.png" %}" />
+        
+    </head>
+    <body>
+        <div id="img_helper">
+            <img id="helper1" src="{% static "img/help1.png" %}" />
+            <img id="helper2" src="{% static "img/help2.png" %}" />
+            <img id="helper3" src="{% static "img/help3.png" %}" />
+            <img id="helper4" src="{% static "img/help4.png" %}" />
+            <img id="helper5" src="{% static "img/help5.png" %}" />
+            <div id="close_helper">
+                <button id="closer" type="button" class="btn btn-primary">Close Me</button>
+            </div>
+        </div>
+        <div id="content">
+            <div id="lightbox"></div>
+        </div>
+        <div id="container">
+        {% csrf_token %}
+            <div id="mainmenu" class="row">
+                <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="navbar-header col-xs-12 col-sm-4 col-md-3 ">
+                        <a class="navbar-brand" href="http://www.worldbank.org/" target="_blank">
+                            <img src="{% static "img/logo_wb.png" %}" class="logo">
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-9">
+                        <ul class="nav navbar-nav options">
+                            <!--<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                   INDICATORS 
+                                   <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">OPTION 1</a></li>
+                                    <li><a href="#">OPTION 2</a></li>
+                                    <li><a href="#">OPTION 3</a></li>
+                                    <li><a href="#">OPTION 4</a></li>
+                                    <li><a href="#">OPTION 5</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                   NEWS 
+                                   <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">OPTION 1</a></li>
+                                    <li><a href="#">OPTION 2</a></li>
+                                    <li><a href="#">OPTION 3</a></li>
+                                    <li><a href="#">OPTION 4</a></li>
+                                    <li><a href="#">OPTION 5</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                   COMMUNITY 
+                                   <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">OPTION 1</a></li>
+                                    <li><a href="#">OPTION 2</a></li>
+                                    <li><a href="#">OPTION 3</a></li>
+                                    <li><a href="#">OPTION 4</a></li>
+                                    <li><a href="#">OPTION 5</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                   ABOUT 
+                                   <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">OPTION 1</a></li>
+                                    <li><a href="#">OPTION 2</a></li>
+                                    <li><a href="#">OPTION 3</a></li>
+                                    <li><a href="#">OPTION 4</a></li>
+                                    <li><a href="#">OPTION 5</a></li>
+                                </ul>
+                            </li>-->
+                            <li class="dropdown">
+                                <a href="#helper" class="help_opts" id="open_helper">
+                                    HELP
+                                    <span class="glyphicon glyphicon-question-sign"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--<div class="col-xs-12 col-sm-3 col-md-2">
+                        <span class="pipe">|</span>
+                        <ul class="nav navbar-nav user">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                   User Name 
+                                   <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">OPTION 1</a></li>
+                                    <li><a href="#">OPTION 2</a></li>
+                                    <li><a href="#">OPTION 3</a></li>
+                                    <li><a href="#">OPTION 4</a></li>
+                                    <li><a href="#">OPTION 5</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>-->
+                </nav>
+            </div>
+            <div id="searchs" class="row">
+                <h1>Fragility, Conflict & Violence Indicator Database</h1>
+                <div class="row">
+                    <div class="controls col-xs-12 col-sm-12 col-md-12">
+                        <form method="POST" action="/main/" id="srkw">
+                            {% csrf_token %}
+                            {% for x in all_posts %}
+                                {% for v in x.values.0 %}
+                                    <input type="hidden" name="{{x.keys.0}}" value="{{v}}" />
+                                {% endfor %}
+                            {% endfor %}
+                            <input id="searchinput" name="keywords" type="text" placeholder="Type your search terms here (e.g. 'economic' or 'energy governance'...)" class="input-xlarge search-query">
+                            <input type="submit" value="Search" class="searchbtn">
+                        </form>
+                        
+                    </div>
+                </div>
+                <h6>Type in a key word you are looking for or add a filter from the below options</h6>
+            </div>
+            <div id="maininfo" class="row">
+                <form id="master_filter" action="/main/" method="POST">
+                    {% csrf_token %}
+                    {% for x in all_posts %}
+                        {% for v in x.values.0 %}
+                            <input type="hidden" name="{{x.keys.0}}" value="{{v}}" />
+                        {% endfor %}
+                    {% endfor %}
+                    <div id="filters" class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div id="filterbtn" class="col-md-3">
+                                <span class="glyphicon glyphicon-filter"></span>
+                                <h4>Add a Filter</h4>
+                            </div>
+                            <div class="col-xs-12 col-md-9 filteropt">
+                                <ul class="nav navbar-nav filteroptions">
+                                    <li class="dropdown">
+                                        <a href="#" id="GDN" class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="/static/img/btn_06.png">
+                                            <h4>Peace & State Buildings Goals</h4>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" id="EPG" class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="/static/img/btn_02.png">
+                                            <h4>Global Practice</h4>
+                                        </a>
+                                    </li>                            
+                                    <li class="dropdown">
+                                        <a href="#" id="CBW" class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="/static/img/btn_05.png">
+                                            <h4>World Bank Sector/Theme</h4>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" id="ETI" class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="/static/img/btn_03.png">
+                                            <h4>Indicator Type</h4>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                
+                    </div>
+                    <div id="NDG">
+                        <img src="/static/img/barra_01.png">
+                        <ul class = "form-desplegable">
+                            <li class="li1"><input id="pl" type="checkbox" name="nw_dg_list[]" value="Political Legitimacy"><p>Political Legitimacy</p></li>
+                            <li class="li2"><input id="se" type="checkbox" name="nw_dg_list[]" value="Security"><p>Security</p></li>
+                            <li class="li3"><input id="ju" type="checkbox" name="nw_dg_list[]" value="Justice"><p>Justice</p></li>
+                            <li class="li4"><input id="ef" type="checkbox" name="nw_dg_list[]" value="Economic Foundations"><p>Economic Foundations</p></li>
+                            <li class="li5"><input id="rs" type="checkbox" name="nw_dg_list[]" value="Revenues & Services"><p>Revenues and Services</p></li>
+                            <li class="li6"><input type="submit" value="Apply" class="filterbtn"></li>
+                        </ul>
+                    </div>
+                    <div id="GPE">
+                        <img src="/static/img/barra_02.png">
+                        <h1>TO BE DEFINE</h1>
+                    </div>
+                    <div id="WBC">
+                        <img src="/static/img/barra_03.png">
+                        <ul class = "form-desplegable row">
+                            <li class="col-md-5">
+                                <div class="ui-widget">
+                                    <select id="combobox">
+                                        <option selected="selected">Select Sector / Theme</option>
+                                    </select>
+                                </div>
+                                </li>
+                            <li class="col-md-5"><ul id="wb_filters"></ul></li>
+                            <li class="col-md-2"><input type="submit" value="Apply" class="filterbtn"></li>
+                        </ul>
+                    </div>
+                    <div id="ITE">
+                        <img src="/static/img/barra_04.png">
+                        <ul class = "form-desplegable">
+                            <li class="li13"><input type="checkbox" name="in_tp_list[]" value="SbPb"><p>SbPb</p></li>
+                            <li class="li14"><input type="checkbox" name="in_tp_list[]" value="Ops"><p>Ops</p></li>
+                            <li class="li15"><input type="submit" value="Apply" class="filterbtn"></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <div id="filters_app1" class="row">
+                <div id="filters_app2" class="row">
+                    <div id="REST" class="col-md-12 {% if key_se_list or ng_filter or wb_filter or it_filter or res_post %} show_me {% endif %}">
+                        <div id="reset_main">
+                            <button id="save_selected" type="button" class="btn btn-danger" data-toggle="modal" data-target="#Save_Show_IND">Save Indicators<span class="glyphicon glyphicon-saved"></span></button>
+                            <button id="view_selected" type="button" class="btn btn-danger" data-toggle="modal" data-target="#Indicators_List_Show">View Saved Indicators<span class="glyphicon glyphicon-list"></span></button>
+                            <button id="save_me" type="button" class="btn btn-danger" data-toggle="modal" data-target="#Save_Show_MSG">Save Search<span class="glyphicon glyphicon-saved"></span></button>
+                            <button id="view_me" type="button" class="btn btn-danger {% if res_post == True %} show_q_l {% else %} hide_q_l {% endif %}" data-toggle="modal" data-target="#Query_List_Show">View Saved Search<span class="glyphicon glyphicon-list"></span></button>
+                            <a href="/">
+                                <button id="reset_me" type="button" class="btn btn-danger">Reset<span class="glyphicon glyphicon-refresh"></span></button>
+                            </a>
+                            <a href="#helper" class="help_opt" id="open_help">
+                                <span class="fa fa-question-circle"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Save_Show_MSG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                </div>
+                                <div id="S_M_modal_body" class="modal-body">
+                                    <h3 class="modal-title" id="myModalLabel">Search Saved Successfully</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Query_List_Show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h3 class="modal-title" id="myModalLabel">Search List Saved</h3>
+                                </div>
+                                <div id="Q_L_modal_body" class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Save_Show_IND" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                </div>
+                                <div id="S_M_modal_body" class="modal-body">
+                                    <h3 class="modal-title" id="myModalLabel">Indicators Saved Successfully</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Indicators_List_Show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h3 class="modal-title" id="myModalLabel">Indicator List Saved</h3>
+                                </div>
+                                <div id="I_L_modal_body" class="modal-body">
+                                    {% if des|length > 0 %}
+                                        {% for i in des %}
+                                            <div class="ind_list_select">
+                                                <h4>
+                                                    <span class="badge">{{i.id}}</span>
+                                                    <strong style="margin-left: 5px;">Indicator Description: </strong>{{i.Description}}
+                                                </h4>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div id="buttons_ind" class="{% if des|length > 0 %} show_bt {% else %} hide_bt {% endif %}">
+                                        <button type="button" id="download_selected" class="down_i btn btn-danger">Download<span class="glyphicon glyphicon-download-alt"></span></button>
+                                        <button type="button" id="remove_selected" class="remove_i btn btn-danger">Remove<span class="glyphicon glyphicon-remove"></span></button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="NORE" class="col-md-12 {% if no_results %} show_me {% endif %}">
+                        <div class="li_warning">
+                            <h2>
+                                <span class="glyphicon glyphicon-warning-sign"></span> There were no matches with the following<span class="glyphicon glyphicon-warning-sign">
+                            </h2>
+                        </div>
+                    </div>
+                    <div id="KEWO" class="col-md-12 {% if key_se_list %} show_me {% endif %}">
+                        <div class="title_filter">
+                            <p>SEARCH</p>
+                        </div>
+                        <div class="li_filter">
+                            <ul>
+                                {% for i in key_se_list %}
+                                    <li><span class="wb_ct">{{i}}</span><a href="#" class="close_filter"><span class="glyphicon glyphicon-remove-sign"></span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="NDGF" class="col-md-12 {% if ng_filter %} show_me {% endif %}">
+                        <div class="title_filter">
+                            <p>PEACE & STATE BUILDINGS GOALS</p>
+                        </div>
+                        <div class="li_filter">
+                            <ul>
+                                {% for i in ng_filter %}
+                                    <li><span class="wb_ct">{{i}}</span><a href="#" class="close_filter"><span class="glyphicon glyphicon-remove-sign"></span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="WBCF" class="col-md-12 {% if wb_filter %} show_me {% endif %}">
+                        <div class="title_filter">
+                            <p>WORLD BANK SECTOR/THEME</p>
+                        </div>
+                        <div class="li_filter">
+                            <ul>
+                                {% for i in wb_filter %}
+                                    <li><span class="wb_ct">{{i}}</span><a href="#" class="close_filter"><span class="glyphicon glyphicon-remove-sign"></span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="ITEF" class="col-md-12 {% if it_filter %} show_me {% endif %}">
+                        <div class="title_filter">
+                            <p>INDICATOR TYPE</p>
+                        </div>
+                        <div class="li_filter">
+                            <ul>
+                                {% for i in it_filter %}
+                                    <li><span class="wb_ct">{{i}}</span><a href="#" class="close_filter"><span class="glyphicon glyphicon-remove-sign"></span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="GPEF" class="col-md-12">
+                        <div class="title_filter">
+                            <p>GLOBAL PRACTICE</p>
+                        </div>
+                        <div class="li_filter">
+                        </div>
+                    </div>
+                    <div id="results_match" class="col-md-12 {% if matches %} show_me {% endif %}">
+                        <div class="li_matches">
+                            <h2>
+                                <span class="glyphicon glyphicon-globe"></span><p id="number_matches">{{matches}}</p> Indicators Found<span class="glyphicon glyphicon-globe">
+                            </h2>
+                        </div>
+                    </div>
+                    <form method="POST" action="/main/" id="main_form">
+                        {% csrf_token %}
+                        {% for x in all_posts %}
+                            {% for v in x.values.0 %}
+                                <input type="hidden" name="{{x.keys.0}}" value="{{v}}" />
+                            {% endfor %}
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+            <div id="WB_Indicators" class="row">
+                <div id="info_indicators" class="row">
+                    <div id="title">
+                        <div class="col_ind col-md-3">INDICATOR</div>
+                        <div class="col_coun col-md-3">P & S BUILDINGS GOALS</div>
+                        <div class="col_wbc col-md-2">SECTOR/THEME</div>
+                        <div class="col_dtav col-md-2">DATASET AVL</div>
+                        <div class="col_sour col-md-2">SOURCE</div>
+                    </div>
+                    <div class="panel-group" id="accordion">
+                        {% for indicator in indicators.object_list %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading row">
+                                    <div class="ind_wb_info col-md-3">
+                                        <div class="col-md-1">
+                                            <input type="checkbox" name="indicator_selected" value="{{indicator.id}}">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h4 class="panel-title">
+                                            <a class="lin_des" data-toggle="collapse" data-parent="#accordion" href="#collapse{{indicator.id}}">
+                                                <span class="descrip">
+                                                    {% if  indicator.Description|length < 55 %}
+                                                        {{indicator.Description}}
+                                                    {% else %}
+                                                        {{ indicator.Description|slice:":55" }}...
+                                                    {% endif %}
+                                                </span>
+                                            </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="ind_wb_info cen col-md-3">
+                                        {{indicator.PBSB}}
+                                    </div>
+                                    <div class="ind_wb_info cen col-md-2">
+                                        {{indicator.ID_WB_Category}}
+                                    </div>
+                                    <div class="ind_wb_info col-md-2">
+                                        {% if  indicator.DataSets_Availables|length < 35 %}
+                                            {{indicator.DataSets_Availables}}
+                                        {% else %}
+                                            {{ indicator.DataSets_Availables|slice:":35" }}...
+                                        {% endif %}
+                                    </div>
+                                    <div class="ind_wb_info col-md-2">
+                                        <p style="width:90%; overflow: hidden;">
+                                        {% if  indicator.Source|length < 35 %}
+                                            {{indicator.Source}}
+                                        {% else %}
+                                            {{ indicator.Source|slice:":35" }}...
+                                        {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="collapse{{indicator.id}}" class="panel-collapse collapse">
+                                    <div class="panel-body table_normal">
+                                        <h2>Source Details
+                                            <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#collapse{{indicator.id}}">Close</button>
+                                        </h2>
+                                        <hr noshade>
+                                        <div class="row table_row">
+                                            <div class="col-md-6 info_one table_cell">
+                                                <p>
+                                                    <p><strong>DESCRIPTION:</strong></p>
+                                                    <p class="descripcion">{{indicator.Description}}</p>
+                                                </p>
+                                                <br>
+                                                <p>
+                                                    <p><strong>PEACE & STATE BUILDINGS GOALS:</strong></p>
+                                                    <p>{{indicator.PBSB}}</p>
+                                                </p>
+                                                <br>
+                                                <p>
+                                                    <p><strong>WORLD BANK SECTOR/THEME:</strong></p>
+                                                    <p>{{indicator.ID_WB_Category}}</p>
+                                                </p>
+                                                <br>
+                                                <p>
+                                                    <p><strong>INDICATOR TYPE:</strong></p>
+                                                    <p>{{indicator.ID_Indicator_Type}}</p>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 info_two table_cell">
+                                                <p>
+                                                    <p><strong>WHERE APPLIED:</strong></p>
+                                                    <p>{{indicator.ID_Indicator_Country}}</p>
+                                                </p>
+                                                <br>
+                                                {% if indicator.DataSets_Availables %}
+                                                    <p>
+                                                        <p><strong>DATASETS AVAILABLES:</strong></p>
+                                                        <p>{{indicator.DataSets_Availables}}</p>
+                                                    </p>
+                                                    <br>
+                                                {% endif %}
+                                                <p>
+                                                    <p><strong>INDICATOR SOURCE:</strong></p>
+                                                    <p>{{indicator.Source}}</p>
+                                                </p>
+                                                <br>
+                                                {% if indicator.indicator_comments_set.all or indicator.indicator_notes_set.all %}
+                                                    <p>
+                                                    <p><strong>COMMENTS & NOTES:</strong></p>
+                                                        {% for j in indicator.indicator_comments_set.all %}
+                                                            <p>{{j.Comment}}</p>
+                                                        {% endfor %}
+                                                        <br>
+                                                        {% for k in indicator.indicator_notes_set.all %}
+                                                            <p>{{k.Note}}</p>
+                                                        {% endfor %}
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="pagination">
+                    <ul class="pagination">
+                        {% load i18n %}
+                        {% if indicators %}
+                            {% if indicators.has_previous %}
+                                <li class="previous"><a href="#?{{ indicators.previous_page_number.querystring }}&{% if keywords %}{{ keywords }}{%elif wb_cat_list%}{{ wb_cat_list }}{% endif %}" class="prev pagers" id="nextpage{{ indicators.previous_page_number }}">&larr; {% trans "previous" %}</a></li>
+                            {% endif %}
+
+                            {% for page in indicators.pages %}
+                                {% if page %}
+                                    {% ifequal page indicators.number %}
+                                        <li class="now current page"><span>{{ page }}</span></li>
+                                    {% else %}
+                                        <li class="page"><a href="#?{{ page.querystring }}" class="pagers" id="nextpage{{ page }}">{{ page }}</a></li>
+                                    {% endifequal %}
+                                {% else %}
+                                    <li class="unknown page"><span>...</span></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if indicators.has_next %}
+                                <li class="next"><a href="#?{{ indicators.next_page_number.querystring }}&{% if keywords %}{{ keywords }}{%elif wb_cat_list%}{{ wb_cat_list }}{% endif %}" class="pagers" id="nextpage{{ indicators.next_page_number }}">{% trans "next" %} &rarr;</a></li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div id="rights" class="row">
+                <div class="col-md-12">
+                    &copy; 2014 <strong>Data4</strong> All Rights Reserved
+                </div>
+            </div>
+        </div><!-- /#container -->
+    </body>
+</html>
